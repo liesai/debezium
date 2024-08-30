@@ -50,6 +50,11 @@ public interface JdbcConfiguration extends Configuration {
     /**
      * A field for the port of the database server. There is no default value.
      */
+    Field URI = Field.create("uri", "base uri of the database");
+    
+    /**
+     * A field for the port of the database server. There is no default value.
+     */
     Field PORT = Field.create("port", "Port of the database");
 
     /**
@@ -84,7 +89,7 @@ public interface JdbcConfiguration extends Configuration {
      * The set of names of the pre-defined JDBC configuration fields, including {@link #DATABASE}, {@link #USER},
      * {@link #PASSWORD}, {@link #HOSTNAME}, and {@link #PORT}.
      */
-    Set<String> ALL_KNOWN_FIELDS = Collect.unmodifiableSet(Field::name, DATABASE, USER, PASSWORD, HOSTNAME, PORT, ON_CONNECT_STATEMENTS,
+    Set<String> ALL_KNOWN_FIELDS = Collect.unmodifiableSet(Field::name, DATABASE, URI, USER, PASSWORD, HOSTNAME, PORT, ON_CONNECT_STATEMENTS,
             CONNECTION_FACTORY_CLASS, CONNECTION_TIMEOUT_MS, QUERY_TIMEOUT_MS);
 
     /**
@@ -142,6 +147,17 @@ public interface JdbcConfiguration extends Configuration {
          * @param password the password
          * @return this builder object so methods can be chained together; never null
          */
+
+       default Builder withUri(String uri) {
+            return with(URI, uri);
+        }
+        /**
+         * Use the given uri in the resulting configuration.
+         *
+         * @param uri
+         * @return this builder object so methods can be chained together; never null
+         */
+        
         default Builder withPassword(String password) {
             return with(PASSWORD, password);
         }
@@ -366,7 +382,14 @@ public interface JdbcConfiguration extends Configuration {
     default int getPort() {
         return getInteger(PORT);
     }
-
+    /**
+     * Get the port property from the configuration.
+     *
+     * @return the specified or default port number, or null if there is none.
+     */
+    default String getUri() {
+        return getString(URI);
+    }
     /**
      * Get the database name property from the configuration.
      *
