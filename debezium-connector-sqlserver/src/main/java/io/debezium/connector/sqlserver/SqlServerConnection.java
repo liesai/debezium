@@ -115,7 +115,7 @@ public class SqlServerConnection extends JdbcConnection {
     private static final String OPENING_QUOTING_CHARACTER = "[";
     private static final String CLOSING_QUOTING_CHARACTER = "]";
 
-    private static final String URL_PATTERN = "jdbc:sqlserver://${" + JdbcConfiguration.HOSTNAME + "}";
+    private static final String URL_PATTERN = "${" + JdbcConfiguration.URI + "}://${" + JdbcConfiguration.HOSTNAME + "}";
 
     private final SqlServerConnectorConfig config;
     private final boolean useSingleDatabase;
