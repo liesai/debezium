@@ -182,7 +182,7 @@ public class JdbcConnection implements AutoCloseable {
             Properties props = config.asProperties();
             Field[] varsWithDefaults = combineVariables(variables,
                     JdbcConfiguration.HOSTNAME,
-                    JdbcConfiguration.URI,                         
+                    JdbcConfiguration.URI,
                     JdbcConfiguration.PORT,
                     JdbcConfiguration.USER,
                     JdbcConfiguration.PASSWORD,
@@ -227,7 +227,7 @@ public class JdbcConnection implements AutoCloseable {
             Properties props = config.asProperties();
             Field[] varsWithDefaults = combineVariables(variables,
                     JdbcConfiguration.HOSTNAME,
-                    JdbcConfiguration.URI, 
+                    JdbcConfiguration.URI,
                     JdbcConfiguration.PORT,
                     JdbcConfiguration.USER,
                     JdbcConfiguration.PASSWORD,
@@ -1125,6 +1125,7 @@ public class JdbcConnection implements AutoCloseable {
     public String username() {
         return config.getString(JdbcConfiguration.USER);
     }
+
     /**
      * Returns the uri for this connection
      *
@@ -1133,6 +1134,7 @@ public class JdbcConnection implements AutoCloseable {
     public String uri() {
         return config.getString(JdbcConfiguration.URI);
     }
+
     /**
      * Returns the database name for this connection
      *

@@ -382,6 +382,12 @@ public class SqlServerConnectorConfig extends HistorizedRelationalDatabaseConnec
             .withValidation(Field::isOptional)
             .withDescription("The SQL Server instance name");
 
+    public static final Field URI = Field.create("uri")
+            .withDisplayName("JDBC URI")
+            .withType(ConfigDef.Type.STRING)
+            .withImportance(ConfigDef.Importance.HIGH)
+            .withDescription("The JDBC URI base for connecting to the database");
+
     public static final Field DATABASE_NAMES = Field.create(DATABASE_CONFIG_PREFIX + "names")
             .withDisplayName("Databases")
             .withType(Type.LIST)
@@ -482,6 +488,7 @@ public class SqlServerConnectorConfig extends HistorizedRelationalDatabaseConnec
             .name("SQL Server")
             .type(
                     DATABASE_NAMES,
+                    URI,
                     HOSTNAME,
                     PORT,
                     USER,

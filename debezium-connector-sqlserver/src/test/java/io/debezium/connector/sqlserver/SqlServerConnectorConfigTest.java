@@ -51,8 +51,9 @@ public class SqlServerConnectorConfigTest {
         final SqlServerConnectorConfig connectorConfig = new SqlServerConnectorConfig(
                 defaultConfig()
                         .with(SqlServerConnectorConfig.HOSTNAME, "example.com")
+                        .with(SqlServerConnectorConfig.URI, "jdbc:sqlserver")
                         .build());
-        assertEquals(connectionUrl(connectorConfig), "jdbc:sqlserver://${hostname}:${port}");
+        assertEquals(connectionUrl(connectorConfig), "${uri}://${hostname}:${port}");
     }
 
     @Test
@@ -62,7 +63,7 @@ public class SqlServerConnectorConfigTest {
                         .with(SqlServerConnectorConfig.HOSTNAME, "example.com")
                         .with(SqlServerConnectorConfig.PORT, "11433")
                         .build());
-        assertEquals(connectionUrl(connectorConfig), "jdbc:sqlserver://${hostname}:${port}");
+        assertEquals(connectionUrl(connectorConfig), "${uri}://${hostname}:${port}");
     }
 
     @Test
@@ -71,8 +72,9 @@ public class SqlServerConnectorConfigTest {
                 defaultConfig()
                         .with(SqlServerConnectorConfig.HOSTNAME, "example.com")
                         .with(SqlServerConnectorConfig.INSTANCE, "instance")
+                        .with(SqlServerConnectorConfig.URI, "{$uri}")
                         .build());
-        assertEquals(connectionUrl(connectorConfig), "jdbc:sqlserver://${hostname}\\instance");
+        assertEquals(connectionUrl(connectorConfig), "${uri}://${hostname}\\instance");
     }
 
     @Test
@@ -83,7 +85,7 @@ public class SqlServerConnectorConfigTest {
                         .with(SqlServerConnectorConfig.INSTANCE, "instance")
                         .with(SqlServerConnectorConfig.PORT, "11433")
                         .build());
-        assertEquals(connectionUrl(connectorConfig), "jdbc:sqlserver://${hostname}\\instance:${port}");
+        assertEquals(connectionUrl(connectorConfig), "${uri}://${hostname}\\instance:${port}");
     }
 
     @Test
@@ -110,6 +112,7 @@ public class SqlServerConnectorConfigTest {
                 .with(CommonConnectorConfig.TOPIC_PREFIX, "server")
                 .with(SqlServerConnectorConfig.HOSTNAME, "localhost")
                 .with(SqlServerConnectorConfig.USER, "debezium")
+                .with(SqlServerConnectorConfig.URI, "jdbc:sqlserver")
                 .with(KafkaSchemaHistory.BOOTSTRAP_SERVERS, "localhost:9092")
                 .with(KafkaSchemaHistory.TOPIC, "history");
     }

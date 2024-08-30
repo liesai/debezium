@@ -39,6 +39,7 @@ public class SqlServerConnectorTest {
         config.put(SqlServerConnectorConfig.DATABASE_NAMES.name(), "sqlserver");
         config.put(SqlServerConnectorConfig.USER.name(), "pikachu");
         config.put(SqlServerConnectorConfig.PASSWORD.name(), "raichu");
+        config.put(SqlServerConnectorConfig.URI.name(), "jdbc:sqlserver");
 
         Config validated = connector.validate(config);
         ConfigValue hostName = getHostName(validated).orElseThrow(() -> new IllegalArgumentException("Host name config option not found"));

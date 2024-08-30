@@ -51,7 +51,7 @@ public interface JdbcConfiguration extends Configuration {
      * A field for the port of the database server. There is no default value.
      */
     Field URI = Field.create("uri", "base uri of the database");
-    
+
     /**
      * A field for the port of the database server. There is no default value.
      */
@@ -148,16 +148,17 @@ public interface JdbcConfiguration extends Configuration {
          * @return this builder object so methods can be chained together; never null
          */
 
-       default Builder withUri(String uri) {
+        default Builder withUri(String uri) {
             return with(URI, uri);
         }
+
         /**
          * Use the given uri in the resulting configuration.
          *
          * @param uri
          * @return this builder object so methods can be chained together; never null
          */
-        
+
         default Builder withPassword(String password) {
             return with(PASSWORD, password);
         }
@@ -382,6 +383,7 @@ public interface JdbcConfiguration extends Configuration {
     default int getPort() {
         return getInteger(PORT);
     }
+
     /**
      * Get the port property from the configuration.
      *
@@ -390,6 +392,7 @@ public interface JdbcConfiguration extends Configuration {
     default String getUri() {
         return getString(URI);
     }
+
     /**
      * Get the database name property from the configuration.
      *
