@@ -182,6 +182,7 @@ public class JdbcConnection implements AutoCloseable {
             Properties props = config.asProperties();
             Field[] varsWithDefaults = combineVariables(variables,
                     JdbcConfiguration.HOSTNAME,
+                    JdbcConfiguration.URI,                         
                     JdbcConfiguration.PORT,
                     JdbcConfiguration.USER,
                     JdbcConfiguration.PASSWORD,
@@ -226,6 +227,7 @@ public class JdbcConnection implements AutoCloseable {
             Properties props = config.asProperties();
             Field[] varsWithDefaults = combineVariables(variables,
                     JdbcConfiguration.HOSTNAME,
+                    JdbcConfiguration.URI, 
                     JdbcConfiguration.PORT,
                     JdbcConfiguration.USER,
                     JdbcConfiguration.PASSWORD,
@@ -1111,7 +1113,7 @@ public class JdbcConnection implements AutoCloseable {
      */
     public String connectionString(String urlPattern) {
         Properties props = config.asProperties();
-        return findAndReplace(urlPattern, props, JdbcConfiguration.DATABASE, JdbcConfiguration.HOSTNAME, JdbcConfiguration.PORT,
+        return findAndReplace(urlPattern, props, JdbcConfiguration.DATABASE, JdbcConfiguration.URI, JdbcConfiguration.HOSTNAME, JdbcConfiguration.PORT,
                 JdbcConfiguration.USER, JdbcConfiguration.PASSWORD);
     }
 
@@ -1123,7 +1125,14 @@ public class JdbcConnection implements AutoCloseable {
     public String username() {
         return config.getString(JdbcConfiguration.USER);
     }
-
+    /**
+     * Returns the uri for this connection
+     *
+     * @return a {@code String}, never {@code null}
+     */
+    public String uri() {
+        return config.getString(JdbcConfiguration.URI);
+    }
     /**
      * Returns the database name for this connection
      *
