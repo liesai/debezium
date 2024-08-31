@@ -11,6 +11,13 @@
     <name>Debezium Core</name>
     <packaging>jar</packaging>
     <dependencies>
+    <!-- https://mvnrepository.com/artifact/org.osgi/org.osgi.service.prefs -->
+<dependency>
+    <groupId>org.osgi</groupId>
+    <artifactId>org.osgi.service.prefs</artifactId>
+    <version>1.1.2</version>
+</dependency>
+
         <dependency>
             <groupId>io.debezium</groupId>
             <artifactId>debezium-api</artifactId>

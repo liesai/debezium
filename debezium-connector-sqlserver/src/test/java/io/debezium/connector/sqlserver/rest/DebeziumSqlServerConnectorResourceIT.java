@@ -218,8 +218,8 @@ public class DebeziumSqlServerConnectorResourceIT {
 
     public static ConnectorConfiguration getSqlServerConnectorConfiguration(int id, String... options) {
         final ConnectorConfiguration config = ConnectorConfiguration.forJdbcContainer(TestInfrastructureHelper.getSqlServerContainer())
-                .with(ConnectorConfiguration.USER, "sa")
-                .with(ConnectorConfiguration.PASSWORD, "Password!")
+                .with(ConnectorConfiguration.USER, "SA")
+                .with(ConnectorConfiguration.PASSWORD, "cAlz3hkBz6i8xBd")
                 .with(KafkaSchemaHistory.BOOTSTRAP_SERVERS.name(), TestInfrastructureHelper.KAFKA_HOSTNAME + ":9092")
                 .with(KafkaSchemaHistory.TOPIC.name(), "dbhistory.inventory")
                 .with(SqlServerConnectorConfig.DATABASE_NAMES.name(), "testDB,testDB2")

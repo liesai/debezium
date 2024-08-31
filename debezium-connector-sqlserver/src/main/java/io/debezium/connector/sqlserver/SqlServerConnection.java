@@ -239,6 +239,7 @@ public class SqlServerConnection extends JdbcConnection {
     @VisibleForTesting
     protected static String createUrlPattern(SqlServerJdbcConfiguration config, boolean useSingleDatabase) {
         String pattern = URL_PATTERN;
+        LOGGER.trace("ICI ---- PATTERN {}", URL_PATTERN);
         if (config.getInstance() != null) {
             pattern += "\\" + config.getInstance();
             if (config.getPortAsString() != null) {

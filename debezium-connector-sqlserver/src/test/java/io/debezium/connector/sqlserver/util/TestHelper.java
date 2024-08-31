@@ -107,8 +107,9 @@ public class TestHelper {
         return JdbcConfiguration.copy(Configuration.fromSystemProperties(SqlServerConnectorConfig.DATABASE_CONFIG_PREFIX))
                 .withDefault(JdbcConfiguration.HOSTNAME, "localhost")
                 .withDefault(JdbcConfiguration.PORT, 1433)
-                .withDefault(JdbcConfiguration.USER, "sa")
-                .withDefault(JdbcConfiguration.PASSWORD, "Password!")
+                .withDefault(JdbcConfiguration.USER, "SA")
+                .withDefault(JdbcConfiguration.PASSWORD, "cAlz3hkBz6i8xBd")
+                .withDefault(JdbcConfiguration.URI, "jdbc:sqlserver")
                 .build();
     }
 
@@ -172,8 +173,8 @@ public class TestHelper {
             enableDbCdc(connection, databaseName);
         }
         catch (SQLException e) {
-            LOGGER.error("Error while initiating test database", e);
-            throw new IllegalStateException("Error while initiating test database", e);
+            LOGGER.error("Error while initiating test database {}", e);
+            throw new IllegalStateException("Error while initiating with {} test database", e);
         }
     }
 

@@ -48,7 +48,7 @@ public interface JdbcConfiguration extends Configuration {
     Field HOSTNAME = Field.create("hostname", "IP address of the database");
 
     /**
-     * A field for the port of the database server. There is no default value.
+     * A field for the uri of the database server. There is no default value.
      */
     Field URI = Field.create("uri", "base uri of the database");
 

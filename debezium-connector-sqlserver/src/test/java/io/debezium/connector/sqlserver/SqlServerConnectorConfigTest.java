@@ -62,6 +62,7 @@ public class SqlServerConnectorConfigTest {
                 defaultConfig()
                         .with(SqlServerConnectorConfig.HOSTNAME, "example.com")
                         .with(SqlServerConnectorConfig.PORT, "11433")
+                        .with(SqlServerConnectorConfig.URI, "jdbc:sqlserver")
                         .build());
         assertEquals(connectionUrl(connectorConfig), "${uri}://${hostname}:${port}");
     }
@@ -72,7 +73,7 @@ public class SqlServerConnectorConfigTest {
                 defaultConfig()
                         .with(SqlServerConnectorConfig.HOSTNAME, "example.com")
                         .with(SqlServerConnectorConfig.INSTANCE, "instance")
-                        .with(SqlServerConnectorConfig.URI, "{$uri}")
+                        .with(SqlServerConnectorConfig.URI, "jdbc:sqlserver")
                         .build());
         assertEquals(connectionUrl(connectorConfig), "${uri}://${hostname}\\instance");
     }
@@ -84,6 +85,7 @@ public class SqlServerConnectorConfigTest {
                         .with(SqlServerConnectorConfig.HOSTNAME, "example.com")
                         .with(SqlServerConnectorConfig.INSTANCE, "instance")
                         .with(SqlServerConnectorConfig.PORT, "11433")
+                        .with(SqlServerConnectorConfig.URI, "jdbc:sqlserver")
                         .build());
         assertEquals(connectionUrl(connectorConfig), "${uri}://${hostname}\\instance:${port}");
     }

@@ -18,7 +18,7 @@
       -->
         <sqlserver.port>1433</sqlserver.port>
         <sqlserver.user>sa</sqlserver.user>
-        <sqlserver.password>Password!</sqlserver.password>
+        <sqlserver.mssql_sa_password>Tffrv#Wzzk48vD^LQjz)</sqlserver.mssql_sa_password>
         <sqlserver.dbname>testDB</sqlserver.dbname>
         <docker.db>mcr.microsoft.com/mssql/server:2022-latest</docker.db>
         <docker.filter>${docker.db}</docker.filter>
@@ -30,6 +30,8 @@
     </properties>
 
     <dependencies>
+<!-- https://mvnrepository.com/artifact/org.osgi/org.osgi.service.prefs -->
+
         <dependency>
             <groupId>io.debezium</groupId>
             <artifactId>debezium-schema-generator</artifactId>
@@ -168,7 +170,7 @@
                                 <namingStrategy>none</namingStrategy>
                                 <env>
                                     <ACCEPT_EULA>Y</ACCEPT_EULA>
-                                    <SA_PASSWORD>${sqlserver.password}</SA_PASSWORD>
+                                    <MSSQL_SA_PASSWORD>${sqlserver.mssql_sa_password}</MSSQL_SA_PASSWORD>
                                     <MSSQL_PID>Standard</MSSQL_PID>
                                     <MSSQL_AGENT_ENABLED>true</MSSQL_AGENT_ENABLED>
                                     <TZ>Asia/Kathmandu</TZ>
@@ -427,3 +429,4 @@
         </profile>
     </profiles>
 </project>
+
